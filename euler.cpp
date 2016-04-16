@@ -16,7 +16,10 @@ cpp_int phi(const cpp_int x) {
     }
     if (x % 2 == 0){
         cpp_int y = x >> 1;
-        return !(y & 1) ? phi(y)<<1 : phi(y);
+        if (!(y & 1)) {
+            return phi(y) << 1;
+        }
+        return phi(y);
     }
     primesieve::iterator pi;
     cpp_int prime;
