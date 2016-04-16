@@ -22,17 +22,20 @@ cpp_int phi(const cpp_int x) {
     cpp_int prime;
     for (prime = pi.next_prime(); prime < x; prime=pi.next_prime())
     {
-        cpp_int k = prime; // Is this working?
+        cpp_int k = prime;
         if (x % k) continue;
         cpp_int o = x/k;
-        cpp_int d = boost::math::gcd(k, o); // And this?
-        return d == 1 ? phi(k)*phi(o) : phi(k)*phi(o)*d/phi(d); // Kaput, dunno why; fails at compilation
+        cpp_int d = boost::math::gcd(k, o);
+        if (d == 1) {
+            return phi(k) * phi(o);
+        }
+        return phi(k) * phi(o) * d / phi(d);
     }
 }
 
 int main(void) {
     cpp_int small = 99;
     cpp_int large = 756928375693284658;
-    std::cout << phi(small);
+    std::cout << phi(9007199254740881);
     return 0;
 }
