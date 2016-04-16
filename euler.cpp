@@ -1,11 +1,9 @@
 #include <iostream>
-#include <vector>
-#include <primesieve/ParallelPrimeSieve.hpp>
+#include <primesieve.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
 #include <boost/math/common_factor.hpp>
-#include <primesieve.hpp>
-#include <gmpxx.h>
+
 
 using namespace boost::multiprecision;
 
@@ -24,7 +22,7 @@ cpp_int phi(const cpp_int x) {
     cpp_int prime;
     for (prime = pi.next_prime(); prime < x; prime=pi.next_prime())
     {
-        cpp_int k = *prime; // Kaput
+        cpp_int k = prime; // Kaput
         if (x % k) continue;
         cpp_int o = x/k;
         cpp_int d = boost::math::gcd(k, o);
