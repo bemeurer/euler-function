@@ -22,11 +22,11 @@ cpp_int phi(const cpp_int x) {
     cpp_int prime;
     for (prime = pi.next_prime(); prime < x; prime=pi.next_prime())
     {
-        cpp_int k = prime; // Kaput
+        cpp_int k = prime; // Is this working?
         if (x % k) continue;
         cpp_int o = x/k;
-        cpp_int d = boost::math::gcd(k, o);
-        return d == 1 ? phi(k)*phi(o) : phi(k)*phi(o)*d/phi(d); // Kaput
+        cpp_int d = boost::math::gcd(k, o); // And this?
+        return d == 1 ? phi(k)*phi(o) : phi(k)*phi(o)*d/phi(d); // Kaput, dunno why; fails at compilation
     }
 }
 
