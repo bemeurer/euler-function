@@ -15,3 +15,4 @@ Simply `#include "totient.h"` in your code.
 * Use GMP instead of cpp_int
 * Use Baillie-PSW for primality instead of Miller-Rabin
 * Generate primes using multithreading
+* Re-write prime generator to use arbitrary precision
