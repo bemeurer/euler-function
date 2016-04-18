@@ -1,4 +1,3 @@
-#include <iostream>
 #include <primesieve.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/miller_rabin.hpp>
@@ -7,7 +6,10 @@
 
 using namespace boost::multiprecision;
 
-cpp_int phi(const cpp_int x) {
+cpp_int phi(cpp_int x) {
+    if (x < 0){
+        return phi(-x);
+    }
     if (x == 1) {
         return 1;
     }
@@ -34,11 +36,4 @@ cpp_int phi(const cpp_int x) {
         }
         return phi(k) * phi(o) * d / phi(d);
     }
-}
-
-int main(void) {
-    cpp_int small = 99;
-    cpp_int large = 756928375693284658;
-    std::cout << phi(9007199254740881);
-    return 0;
 }
