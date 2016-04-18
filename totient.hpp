@@ -7,13 +7,14 @@
 using namespace boost::multiprecision;
 
 cpp_int phi(cpp_int x) {
-    if (x < 0){
-        return phi(-x);
+    x = (x<0) ? -x : x;
+    if (x == 0){
+        return 0;
     }
-    if (x == 1) {
+    if (x <= 2) {
         return 1;
     }
-    if (miller_rabin_test(x, 50)) {
+    if (miller_rabin_test(x, 100)) {
         return x-1;
     }
     if (x % 2 == 0){
