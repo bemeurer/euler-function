@@ -26,7 +26,8 @@ cpp_int phi(cpp_int x) {
     }
     primesieve::iterator pi;
     cpp_int prime;
-    for (prime = pi.next_prime(); prime < x; prime=pi.next_prime())
+    std::cout << "Starting prime loop\n";
+    for (prime = pi.next_prime(); prime <= boost::multiprecision::sqrt(x); prime=pi.next_prime())
     {
         cpp_int k = prime;
         if (x % k) continue;
