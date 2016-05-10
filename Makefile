@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++14 -Wall -O3 -lboost_system -lboost_unit_test_framework -lboost_thread -lgmp -lprimesieve
+CFLAGS=-std=c++14 -Wall -O3 -lgmpxx -lgmp -lprimesieve
 LDFLAGS=
 SOURCES=test.cpp
 all: test.o
