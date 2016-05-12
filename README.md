@@ -19,8 +19,8 @@ Simply `#include "totient.hpp"` in your code.
 
 ## TODO
 
-*   Use GMP instead of cpp_int :clock4:
-*   Use Baillie-PSW for primality instead of Miller-Rabin :x:
+*   Use GMP instead of cpp_int :white_check_mark:
+*   Use Baillie-PSW for primality instead of Miller-Rabin :clock4:
 *   Generate primes using multithreading :x:
 *   Re-write prime generator to use arbitrary precision :x:
 
