@@ -21,7 +21,7 @@ bool test(mpz_class x, mpz_class y, int n)
     {
         res = (phi(x) == y);
     }
-    return (res);
+    return res;
 }
 
 bool rangeTest(bool verbose)
@@ -48,5 +48,5 @@ bool rangeTest(bool verbose)
             passed = false;
         }
     }
-    return (passed);
+    return passed;
 }

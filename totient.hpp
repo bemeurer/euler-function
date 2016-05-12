@@ -60,14 +60,14 @@ mpz_class phi(mpz_class x)
         if (mpz_cmp_si(d.get_mpz_t(), 1) == 0)
         {
             mpz_mul(x.get_mpz_t(), phi(k).get_mpz_t(), phi(o).get_mpz_t());
-            return (x);
+            return x;
         } else
         {
             mpz_mul(x.get_mpz_t(), phi(k).get_mpz_t(), phi(o).get_mpz_t());
             mpz_class trans;
             mpz_mul(trans.get_mpz_t(), x.get_mpz_t(), d.get_mpz_t());
             mpz_div(x.get_mpz_t(), trans.get_mpz_t(), phi(d).get_mpz_t());
-            return (x);
+            return x;
         }
     }
     mpz_class p;
@@ -76,7 +76,7 @@ mpz_class phi(mpz_class x)
     if (mpz_cmp(p.get_mpz_t(), x.get_mpz_t()) >= 0)
     {
         x -= 1;
-        return (x);
+        return x;
     }
     mpz_class o;
     mpz_div(o.get_mpz_t(), x.get_mpz_t(), p.get_mpz_t());
@@ -84,7 +84,7 @@ mpz_class phi(mpz_class x)
     if (mpz_cmp_si(d.get_mpz_t(), 1) == 0)
     {
         mpz_mul(x.get_mpz_t(), phi(p).get_mpz_t(), phi(o).get_mpz_t());
-        return (x);
+        return x;
     }
     else
     {
@@ -92,6 +92,6 @@ mpz_class phi(mpz_class x)
         mpz_class trans;
         mpz_mul(trans.get_mpz_t(), x.get_mpz_t(), d.get_mpz_t());
         mpz_div(x.get_mpz_t(), trans.get_mpz_t(), phi(d).get_mpz_t());
-        return (x);
+        return x;
     }
 }
