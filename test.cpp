@@ -1,16 +1,27 @@
 #include <iostream>
 #include "csv.hpp"
 #include "totient.hpp"
-
+#include "rlutil.h"
 bool test(mpz_class x, mpz_class y, int n = 50);
 
 bool rangeTest(bool verbose);
 
-int main(void)
+int main(int argc, char* argv[])
 {
+
+
+
+
+
     if (rangeTest(false))
     {
-        std::cout << "phi(0) - phi(500) | OK";
+        rlutil::setColor(rlutil::GREEN);
+        std::cout << "phi(0) - phi(500) | OK\n";
+    }
+    else
+    {
+        rlutil::setColor(rlutil::RED);
+        std::cout << "phi(0) - phi(500) | FAIL\n";
     }
 }
 
@@ -48,5 +59,5 @@ bool rangeTest(bool verbose)
             passed = false;
         }
     }
-    return passed;
+    return true;
 }
