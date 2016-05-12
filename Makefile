@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++14 -Wall -O3 -lgmpxx -lgmp -lprimesieve
+CFLAGS=-std=c++14 -Wall -O3 -lpthread -lgmpxx -lgmp -lprimesieve
 LDFLAGS=
 SOURCES=test.cpp
 all: test.o
