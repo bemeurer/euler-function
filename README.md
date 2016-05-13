@@ -20,6 +20,8 @@ Simply `#include "totient.hpp"` in your code.
 ## TODO
 
 *   Use GMP instead of cpp_int :white_check_mark:
+*   Better usage documentation :clock4:
+*   Clean up auxiliary test libraries :x:
 *   Use Baillie-PSW for primality instead of Miller-Rabin :clock4:
 *   Generate primes using multithreading :x:
 *   Re-write prime generator to use arbitrary precision :x:
