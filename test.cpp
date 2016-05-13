@@ -47,16 +47,26 @@ bool Test::range(bool verbose) {
 
 bool Test::largeNumber(bool verbose) {
     bool passed = true;
-    mpz_class pairs[10][10] = {{mpz_class("985763284578345834"),            mpz_class("298498582277498400")},
-                               {mpz_class("98576328457834581423412342334"), mpz_class(
-                                       "45827308937045311626868162560")}};
-    if (Test::numeric(pairs[0][0], pairs[0][1], 1)) {
-        if (verbose) {
-            std::cout << "phi(" << pairs[0][0].get_str(10) << ") = " << pairs[0][1].get_str(10) << " | OK\n";
-        }
-        else {
-            std::cout << "phi(" << pairs[0][0].get_str(10) << ") = " << pairs[0][1].get_str(10) << " | FALSE\n";
-            passed = false;
+    std::vector<std::vector<mpz_class>> pairs = // Vector or Array? Dan says array but vector has cool features
+            {
+                    {mpz_class("985763284578345834"),                      mpz_class("298498582277498400")},
+                    {mpz_class("43649128734981236498122387"),              mpz_class(
+                            "43248678012493665314544000")}, //XXX: This one takes a while, why?
+                    {mpz_class("98576328457834581423412342334"),           mpz_class("45827308937045311626868162560")},
+                    {mpz_class("958324857389475983274569823476558973245"), mpz_class(
+                            "644667608743795154660944983332241662208")}
+            };
+
+    for (auto const &v: pairs) { // XXX: Better way to do this?
+        if (Test::numeric(v[0], v[1], 1)) {
+
+            if (verbose) {
+                std::cout << "phi(" << v[0].get_str(10) << ") = " << v[1].get_str(10) << " | OK\n";
+            }
+            else {
+                std::cout << "phi(" << v[0].get_str(10) << ") = " << v[1].get_str(10) << " | FALSE\n";
+                passed = false;
+            }
         }
     }
     return passed;
@@ -71,7 +81,9 @@ void Test::eval(bool (Test::*test)(bool), Test &testClass, std::string name, boo
         rlutil::setColor(rlutil::RED);
         std::cout << name << " Test Failed\n";
     }
+    rlutil::setColor(rlutil::GREY);
 }
+
 int main(int argc, char* argv[])
 {
     int opt;
