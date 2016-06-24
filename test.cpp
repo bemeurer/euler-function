@@ -67,17 +67,15 @@ bool Test::range(bool verbose) {
 
 bool Test::largeNumber(bool verbose) {
     bool passed = true;
-    std::vector<std::vector<mpz_class>> pairs = // Vector or Array? Dan says array but vector has cool features
-            {
-                    {mpz_class("985763284578345834"),                      mpz_class("298498582277498400")},
-                    //{mpz_class("43649128734981236498122387"),              mpz_class("43248678012493665314544000")}, //XXX: This one takes a while, why?
-                    {mpz_class("98576328457834581423412342334"),           mpz_class("45827308937045311626868162560")},
-                    {mpz_class("958324857389475983274569823476558973245"), mpz_class(
-                            "644667608743795154660944983332241662208")}
-            };
-
-    for (auto const &v: pairs) { // XXX: Better way to do this?
-        if (Test::numeric(v[0], v[1], 1, verbose)) {
+    std::array<std::pair<mpz_class, mpz_class>, 3> pairs =
+            {{
+                     {mpz_class("985763284578345834"), mpz_class("298498582277498400")},
+                     {mpz_class("98576328457834581423412342334"), mpz_class("45827308937045311626868162560")},
+                     {mpz_class("958324857389475983274569823476558973245"), mpz_class(
+                             "644667608743795154660944983332241662208")}
+             }};
+    for (const auto &v: pairs) { // XXX: Better way to do this?
+        if (Test::numeric(v.first, v.second, 1, verbose)) {
         }
         else {
             passed = false;
@@ -92,7 +90,7 @@ int main(int argc, char* argv[])
     int opt;
     opterr = 0;
     bool verbose = false;
-    while ((opt = getopt(argc, argv, "vt:")) != -1)
+    while ((opt = getopt(argc, argv, "hvt:")) != -1)
     {
         switch (opt) {
             case 'v':
@@ -113,6 +111,16 @@ int main(int argc, char* argv[])
                         break;
                 }
                 break;
+            case 'h':
+                std::cout << "No option specified" << "\n"
+                << "-v    : Enables verbose" << "\n"
+                << "-t arg: Performs test" << "\n"
+                << "   a  : All tests" << "\n"
+                << "   r  : Range test" << "\n"
+                << "   l  : Large number test" << "\n";
+                break;
+            case '?':
+
             default:
                 std::cerr << "Unknown option '" << char(opt) << "'\n";
                 break;
