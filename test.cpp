@@ -73,7 +73,7 @@ bool Test::largeNumber(bool verbose) {
                      {mpz_class("958324857389475983274569823476558973245"), mpz_class(
                              "644667608743795154660944983332241662208")}
              }};
-    for (const auto &v: pairs) { // XXX: Better way to do this?
+    for (const std::pair<mpz_class, mpz_class> &v: pairs) { // XXX: Better way to do this?
         if (Test::numeric(v.first, v.second, 1, verbose)) {
         }
         else {
